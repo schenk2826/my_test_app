@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>My Test App</title>
+  </head>
+  <body>
+    <h1>List of Contacts</h1>
+    <h2>There are <%= count %> records</h2>
+
+    <ul>
+      <% contacts.forEach(function(contact) { %>
+        <li><%= contact.fname %> <%= contact.lname %> -- <%= contact.email %></li>
+      <% }); %>
+    </ul>
+
+    <form action="/back" method="get">
+      <input type="submit" value="Back" />
+    </form>
+  </body>
+</html>

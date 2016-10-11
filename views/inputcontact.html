@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>My Test App</title>
+  </head>
+  <body>
+    <h1>Enter a Contact</h1>
+    <form action="/add" method="post" enctype="multipart/form-data">
+         <fieldset>
+            <label for="name">First Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter first name" />
+            <br />
+            <label for="name">Last Name:</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter last name" />
+            <br />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" />
+            <br />
+            <input type="submit" value="Create Contact" />            
+         </fieldset>
+      </form>
+      <form action="/back" method="get">
+        <input type="submit" value="Back" />
+      </form>
+  </body>
+</html>

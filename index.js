@@ -16,15 +16,18 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 //set up a connection pool
-const config = {
-  user: 'postgres',
-  password: 'postgres',
-  database: 'example_app_db',
+/*const config = {
+  user: 'goabpzgzikddbf',
+  password: 'q7wd2wi7EITCClMF_5yZ-Rxdpp',
+  database: 'd9ps8aivlkthc2',
   port: 5432,
   max: 10,
   idleTimeoutMillis: 30000
 };
-const pool = new pg.Pool(config);
+const pool = new pg.Pool(config);*/
+
+//set DB connection
+const conStr = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/example_app_db';
 
 // Setup helpers for Express
 app.use(bodyParser.json());
@@ -50,7 +53,7 @@ app.get('/back', (req, res) => {
 //Get a list of contacts
 app.get('/list', (req, res, next) => {
   console.log(`Hit the GET /list endpoint!`);
-  pool.connect(function (err, client, done) {
+  pg.connect(conStr, function (err, client, done) {
       if (err) {
         return next(err);
       }
@@ -85,7 +88,7 @@ app.post('/add', function (req, res, next) {
   var lname = req.fields.lname;
   var email = req.fields.email;
 
-  pool.connect(function (err, client, done) {
+  pg.connect(conStr, function (err, client, done) {
       if (err) {
         return next(err);
       }
